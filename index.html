@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101827" />
+    <title>Hepsiburada Fiyat Takip Merkezi</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <main class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">PF</div>
+          <div>
+            <div class="brand-name">Paralel Fiyat</div>
+            <div class="brand-subtitle">Operasyon paneli</div>
+          </div>
+        </div>
+        <div class="server-state"><span></span> Sunucu hazır</div>
+      </header>
+
+      <section id="loginView" class="login-card hidden">
+        <div class="eyebrow">Güvenli erişim</div>
+        <h1>Panele giriş yapın</h1>
+        <p>Rapor ekranına ulaşmak için yönetici parolanızı girin.</p>
+        <form id="loginForm">
+          <label for="password">Panel parolası</label>
+          <div class="login-row">
+            <input id="password" type="password" autocomplete="current-password" required />
+            <button type="submit" class="button primary">Giriş yap</button>
+          </div>
+          <div id="loginError" class="form-error"></div>
+        </form>
+      </section>
+
+      <section id="dashboard" class="hidden">
+        <div class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow">Hepsiburada · <span id="productCount">114</span> ürün</div>
+            <h1>Fiyat Takip Merkezi</h1>
+            <p>
+              Ürünleri, satıcıları ve güncel fiyatları tek çalıştırmada kontrol edin.
+              Tamamlandığında Excel raporunuz doğrudan indirilmeye hazır olur.
+            </p>
+          </div>
+          <div class="hero-actions">
+            <button id="startButton" class="button primary large">
+              <span class="button-icon">▶</span>
+              Raporu başlat
+            </button>
+            <button id="cancelButton" class="button ghost hidden">Taramayı iptal et</button>
+          </div>
+        </div>
+
+        <section class="run-card">
+          <div class="run-head">
+            <div>
+              <div class="section-label">Son çalışma</div>
+              <h2 id="runTitle">Henüz rapor oluşturulmadı</h2>
+            </div>
+            <div id="statusBadge" class="status-badge idle">Hazır</div>
+          </div>
+
+          <div class="progress-track" aria-label="İlerleme">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+          <div class="progress-line">
+            <span id="runMessage">Başlatmak için yukarıdaki düğmeye basın.</span>
+            <strong id="progressText">0%</strong>
+          </div>
+
+          <div class="metrics">
+            <article>
+              <span>İşlenen</span>
+              <strong id="completedMetric">0 / 114</strong>
+            </article>
+            <article>
+              <span>Bulunan</span>
+              <strong id="foundMetric">0</strong>
+            </article>
+            <article>
+              <span>Bulunamayan</span>
+              <strong id="notFoundMetric">0</strong>
+            </article>
+            <article>
+              <span>Hata</span>
+              <strong id="errorMetric">0</strong>
+            </article>
+          </div>
+
+          <div id="downloadArea" class="download-area hidden">
+            <div>
+              <strong>Excel raporunuz hazır</strong>
+              <span>Güncel satıcı ve fiyat bilgileri işlendi.</span>
+            </div>
+            <a id="downloadButton" class="button success" href="#">Excel’i indir ↓</a>
+          </div>
+        </section>
+
+        <details class="log-card">
+          <summary>
+            <span>Canlı çalışma günlüğü</span>
+            <span class="summary-hint">Ayrıntıları göster</span>
+          </summary>
+          <pre id="logOutput">Çalışma günlüğü burada görünecek.</pre>
+        </details>
+      </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
